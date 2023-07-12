@@ -1,24 +1,27 @@
-def criar_conta(numero,titular,saldo,limite):
-    conta = {"numero":numero,"titular":titular,"saldo":saldo,"limite":limite}
-    return conta
+class Conta:
+    def __init__(self,numero,titular,saldo,limite):
+        print("Construindo objeto...{}".format(self))
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo
+        self.limite = limite
 
-def deposita(conta,valor):
-    conta["saldo"] += valor
+    def extrato(self):
+        print("Saldo {} do titular {}".format(self.saldo,self.titular))
 
-def saca(conta,valor):
-    conta["saldo"] -= valor
+    def deposita(self,valor):
+        self.saldo += valor
 
-def extrato(conta):
-    print("Saldo é {}".format(conta["saldo"]))
+    def saca(self,valor):
+        self.saldo -= valor
 
-conta = criar_conta(123,"Matheus",55,1000)
 
-print("Primeiro",conta)
 
-deposita(conta,500)
-print("Segundo",conta)
 
-saca(conta,100)
-print("Terceiro",conta)
+# Teste da classe
 
-extrato(conta)
+conta = Conta(123,"Matheus",100,1000.0)
+print(conta.extrato())
+print(conta.deposita(900))
+print(conta.saca(100))
+print(conta.extrato())
